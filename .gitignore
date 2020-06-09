@@ -2,3 +2,5 @@
 *.vcxproj*
 Ausarbeitung/.vs/
 Ausarbeitung/Release/
+Ausarbeitung/x64/
+*.gch
