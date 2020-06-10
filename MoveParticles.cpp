@@ -6,26 +6,28 @@ void MoveParticles(const int nr_Particles, Particle* const partikel, const float
 	for (int i = 0; i < nr_Particles; i++) {
 
 		// Kraftkomponenten (x,y,z) der Kraft auf aktuellen Partikel (i) 
-		float Fx = 0, Fy = 0, Fz = 0;
+		float Fx = .0f, Fy = .0f, Fz = .0f;
 
 		// Schleife über die anderen Partikel die Kraft auf Partikel i ausüben
 		for (int j = 0; j < nr_Particles; j++) {
 
 			// Abschwächung als zusätzlicher Abstand, um Singularität und Selbst-Interaktion zu vermeiden
-			const float softening = 1e-20;
+			const float softening = 1e-20f;
 
 			// Gravitationsgesetz
 			// Berechne Abstand der Partikel i und j
 			const float dx = partikel[j].x - partikel[i].x;
 			const float dy = partikel[j].y - partikel[i].y;
 			const float dz = partikel[j].z - partikel[i].z;
+
 			const float drSquared = dx * dx + dy * dy + dz * dz + softening;
-			const float drPower32 = pow(drSquared, 3.0f / 2.0f);
+			const float drPower32 = pow(drSquared, 3.f / 2.f);
 
 			// Addiere Kraftkomponenten zur Netto-Kraft
-			Fx += dx / drPower32;
-			Fy += dy / drPower32;
-			Fz += dz / drPower32;
+			// Was ist besser? Bottleneck durch eine Division und Multiplizieren, oder parallele Division?
+			Fx += dx * 1.f / drPower32;
+			Fy += dy * 1.f / drPower32;
+			Fz += dz * 1.f / drPower32;
 		}
 
 		// Berechne Änderung der Geschwindigkeit des Partikel i durch einwirkende Kraft 
