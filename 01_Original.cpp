@@ -24,11 +24,11 @@ void copyParticles(Particle* const partikel_src, Particle* const partikel_dst, c
 }
 
 int main() {
-	//Problemgröße und Anzahl und Größe der Zeitschritte definieren
+	//ProblemgrÃ¶ÃŸe und Anzahl und GrÃ¶ÃŸe der Zeitschritte definieren
 	constexpr int nrOfParticles = 16384;
-	constexpr int nrRuns = 5;  // Anzahl der Läufe und der Zeitschritte der Simulation
-	constexpr int skipRuns = 3; // Anzahl der Messungen, die nicht in Mittelwert berücksichtigt werden
-	constexpr float dt = 0.01f; // Länge eines Zeitschrittes
+	constexpr int nrRuns = 5;  // Anzahl der LÃ¤ufe und der Zeitschritte der Simulation
+	constexpr int skipRuns = 3; // Anzahl der Messungen, die nicht in Mittelwert berÃ¼cksichtigt werden
+	constexpr float dt = 0.01f; // LÃ¤nge eines Zeitschrittes
 
 	Particle* partikel_start = new Particle[nrOfParticles];
 	Particle* partikel = new Particle[nrOfParticles];
@@ -97,6 +97,7 @@ int main() {
 	}
 	sum /= 1208.87023903f;
 	printf("Sum: %f\n", sum);
+
 	delete[] partikel;
 	system("PAUSE");
 }
