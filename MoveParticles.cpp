@@ -6,13 +6,13 @@ void MoveParticles(const int nr_Particles, Particle* const partikel, const float
 	for (int i = 0; i < nr_Particles; i++) {
 
 		// Kraftkomponenten (x,y,z) der Kraft auf aktuellen Partikel (i) 
-		float Fx = 0, Fy = 0, Fz = 0;
+		float Fx = .0f, Fy = .0f, Fz = .0f;
 
 		// Schleife über die anderen Partikel die Kraft auf Partikel i ausüben
 		for (int j = 0; j < nr_Particles; j++) {
 
 			// Abschwächung als zusätzlicher Abstand, um Singularität und Selbst-Interaktion zu vermeiden
-			const float softening = 1e-20;
+			const float softening = 1e-20f;
 
 			// Gravitationsgesetz
 			// Berechne Abstand der Partikel i und j
@@ -20,7 +20,7 @@ void MoveParticles(const int nr_Particles, Particle* const partikel, const float
 			const float dy = partikel[j].y - partikel[i].y;
 			const float dz = partikel[j].z - partikel[i].z;
 			const float drSquared = dx * dx + dy * dy + dz * dz + softening;
-			const float drPower32 = pow(drSquared, 3.0 / 2.0);
+			const float drPower32 = pow(drSquared, 3.0f / 2.0f);
 
 			// Addiere Kraftkomponenten zur Netto-Kraft
 			Fx += dx / drPower32;
