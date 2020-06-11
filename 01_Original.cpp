@@ -86,6 +86,18 @@ int main() {
 	printf("Average Performance: %f03 +- %f03 GFLOPS/s \n", meanGFlops, stdGFlops);
 	printf("#####################################\n");
 
+	float sum = .0f;
+	for (int i = 0; i < sizeof(partikel); i++) {
+		sum += partikel[i].vx;
+		sum += partikel[i].vy;
+		sum += partikel[i].vz;
+		sum += partikel[i].x;
+		sum += partikel[i].y;
+		sum += partikel[i].z;
+	}
+	sum /= 1208.87023903f;
+	printf("Sum: %f\n", sum);
+
 	delete[] partikel;
 	system("PAUSE");
 }
