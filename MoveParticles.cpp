@@ -23,9 +23,12 @@ void MoveParticles(const int nr_Particles, Particle* const partikel, const float
 			const float drPower32 = pow(drSquared, 3.0f / 2.0f);
 
 			// Addiere Kraftkomponenten zur Netto-Kraft
-			Fx += dx / drPower32;
-			Fy += dy / drPower32;
-			Fz += dz / drPower32;
+			// What is more efficient? Bottleneck by one division and three multiplication, or three divisions?
+			drPower32divided = 1.0f / drPower32;
+			
+			Fx += dx * drPower32divided;
+			Fy += dy * drPower32divided;
+			Fz += dz * drPower32divided;
 		}
 
 		// Berechne Änderung der Geschwindigkeit des Partikel i durch einwirkende Kraft 
