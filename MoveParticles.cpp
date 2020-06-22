@@ -4,21 +4,14 @@ void MoveParticles(const int nr_Particles, Particle const partikel, const float 
 
 	// Abschwächung als zusätzlicher Abstand, um Singularität und Selbst-Interaktion zu vermeiden
 	const float softening = 1e-20f;
-	
 	float* arrX = (float*)_mm_malloc(sizeof(float) * nr_Particles, 32);
 	float* arrY = (float*)_mm_malloc(sizeof(float) * nr_Particles, 32);
 	float* arrZ = (float*)_mm_malloc(sizeof(float) * nr_Particles, 32);
+	float Fx = .0f, Fy = .0f, Fz = .0f;
+	const int max_num_threads = omp_get_max_threads();
 	// Schleife über alle Partikel
+#pragma omp parallel num_threads(max_num_threads) for collapse(2) schedule(static)
 	for (int i = 0; i < nr_Particles; i++) {
-
-		// Kraftkomponenten (x,y,z) der Kraft auf aktuellen Partikel (i) 
-		float Fx = .0f, Fy = .0f, Fz = .0f;
-		__assume_aligned(partikel.x, 32);
-		__assume_aligned(partikel.y, 32);
-		__assume_aligned(partikel.z, 32);
-		__assume_aligned(partikel.vx, 32);
-		__assume_aligned(partikel.vy, 32);
-		__assume_aligned(partikel.vz, 32);
 #pragma omp simd aligned(arrX:32, arrY:32, arrZ:32)
 		// Schleife über die anderen Partikel die Kraft auf Partikel i ausüben
 		for (int j = 0; j < nr_Particles; j++) {
@@ -31,28 +24,26 @@ void MoveParticles(const int nr_Particles, Particle const partikel, const float 
 
 			float drPower32 = sqrt(drSquared);
 			drPower32 = drPower32 * drPower32 * drPower32;
-			
-			//drPower32 = pow(drSquared, 3.f / 2.f);
-			arrX[j] = dx * 1.f / drPower32;
-			arrY[j] = dy * 1.f / drPower32;
-			arrZ[j] = dz * 1.f / drPower32;
 
+			arrX[j] = dx / drPower32;
+			arrY[j] = dy / drPower32;
+			arrZ[j] = dz / drPower32;
 		}
-
-		__assume_aligned(arrX, 32);
-		__assume_aligned(arrY, 32);
-		__assume_aligned(arrZ, 32);
-#pragma omp simd
-		for (int j = 0; j < nr_Particles; j++) {
-			// Addiere Kraftkomponenten zur Netto-Kraft
+#pragma omp simd aligned(arrX:32, arrY:32, arrZ:32)
+		for (int j = 0; j < nr_Particles; j++)
+		{
 			Fx += arrX[j];
 			Fy += arrY[j];
 			Fz += arrZ[j];
 		}
+
 		// Berechne Änderung der Geschwindigkeit des Partikel i durch einwirkende Kraft 
 		partikel.vx[i] += dt * Fx;
 		partikel.vy[i] += dt * Fy;
 		partikel.vz[i] += dt * Fz;
+		Fx = .0f;
+		Fy = .0f;
+		Fz = .0f;
 	}
 
 	// Bewege Partikel entsprechend der aktuellen Geschwindigkeit
