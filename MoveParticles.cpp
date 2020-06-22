@@ -1,10 +1,10 @@
 #include "main.h"
 
-void MoveParticles(const int nr_Particles, Particle* const partikel, const float dt) {
+void MoveParticles(const int nr_Particles, Particle const partikel, const float dt) {
 
 	// Abschwächung als zusätzlicher Abstand, um Singularität und Selbst-Interaktion zu vermeiden
 	const float softening = 1e-20f;
-
+	
 	float* arrX = (float*)_mm_malloc(sizeof(float) * nr_Particles, 32);
 	float* arrY = (float*)_mm_malloc(sizeof(float) * nr_Particles, 32);
 	float* arrZ = (float*)_mm_malloc(sizeof(float) * nr_Particles, 32);
@@ -13,14 +13,20 @@ void MoveParticles(const int nr_Particles, Particle* const partikel, const float
 
 		// Kraftkomponenten (x,y,z) der Kraft auf aktuellen Partikel (i) 
 		float Fx = .0f, Fy = .0f, Fz = .0f;
-
+		__assume_aligned(partikel.x, 32);
+		__assume_aligned(partikel.y, 32);
+		__assume_aligned(partikel.z, 32);
+		__assume_aligned(partikel.vx, 32);
+		__assume_aligned(partikel.vy, 32);
+		__assume_aligned(partikel.vz, 32);
+#pragma omp simd aligned(arrX:32, arrY:32, arrZ:32)
 		// Schleife über die anderen Partikel die Kraft auf Partikel i ausüben
 		for (int j = 0; j < nr_Particles; j++) {
 			// Gravitationsgesetz
 			// Berechne Abstand der Partikel i und j
-			const float dx = partikel[j].x - partikel[i].x;
-			const float dy = partikel[j].y - partikel[i].y;
-			const float dz = partikel[j].z - partikel[i].z;
+			const float dx = partikel.x[j] - partikel.x[i];
+			const float dy = partikel.y[j] - partikel.y[i];
+			const float dz = partikel.z[j] - partikel.z[i];
 			const float drSquared = dx * dx + dy * dy + dz * dz + softening;
 
 			float drPower32 = sqrt(drSquared);
@@ -33,6 +39,9 @@ void MoveParticles(const int nr_Particles, Particle* const partikel, const float
 
 		}
 
+		__assume_aligned(arrX, 32);
+		__assume_aligned(arrY, 32);
+		__assume_aligned(arrZ, 32);
 #pragma omp simd
 		for (int j = 0; j < nr_Particles; j++) {
 			// Addiere Kraftkomponenten zur Netto-Kraft
@@ -41,15 +50,15 @@ void MoveParticles(const int nr_Particles, Particle* const partikel, const float
 			Fz += arrZ[j];
 		}
 		// Berechne Änderung der Geschwindigkeit des Partikel i durch einwirkende Kraft 
-		partikel[i].vx += dt * Fx;
-		partikel[i].vy += dt * Fy;
-		partikel[i].vz += dt * Fz;
+		partikel.vx[i] += dt * Fx;
+		partikel.vy[i] += dt * Fy;
+		partikel.vz[i] += dt * Fz;
 	}
 
 	// Bewege Partikel entsprechend der aktuellen Geschwindigkeit
 	for (int i = 0; i < nr_Particles; i++) {
-		partikel[i].x += partikel[i].vx * dt;
-		partikel[i].y += partikel[i].vy * dt;
-		partikel[i].z += partikel[i].vz * dt;
+		partikel.x[i] += partikel.vx[i] * dt;
+		partikel.y[i] += partikel.vy[i] * dt;
+		partikel.z[i] += partikel.vz[i] * dt;
 	}
 }

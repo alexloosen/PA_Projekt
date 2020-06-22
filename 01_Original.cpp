@@ -1,25 +1,25 @@
 #include "main.h"
 
-void initParticles(Particle* const partikel, const int nr_Particles) {
+void initParticles(Particle const partikel, const int nr_Particles) {
 	srand(0);
 	for (int i = 0; i < nr_Particles; i++) {
-		partikel[i].x = float(rand()) / RAND_MAX;
-		partikel[i].y = float(rand()) / RAND_MAX;
-		partikel[i].z = float(rand()) / RAND_MAX;
-		partikel[i].vx = float(rand()) / RAND_MAX;
-		partikel[i].vy = float(rand()) / RAND_MAX;
-		partikel[i].vz = float(rand()) / RAND_MAX;
+		partikel.x[i] = float(rand()) / RAND_MAX;
+		partikel.y[i] = float(rand()) / RAND_MAX;
+		partikel.z[i] = float(rand()) / RAND_MAX;
+		partikel.vx[i] = float(rand()) / RAND_MAX;
+		partikel.vy[i] = float(rand()) / RAND_MAX;
+		partikel.vz[i] = float(rand()) / RAND_MAX;
 	}
 }
 
-void copyParticles(Particle* const partikel_src, Particle* const partikel_dst, const int nr_Particles) {
+void copyParticles(Particle const partikel_src, Particle const partikel_dst, const int nr_Particles) {
 	for (int i = 0; i < nr_Particles; i++) {
-		partikel_dst[i].x = partikel_src[i].x;
-		partikel_dst[i].y = partikel_src[i].y;
-		partikel_dst[i].z = partikel_src[i].z;
-		partikel_dst[i].vx = partikel_src[i].vx;
-		partikel_dst[i].vy = partikel_src[i].vy;
-		partikel_dst[i].vz = partikel_src[i].vz;
+		partikel_dst.x[i] = partikel_src.x[i];
+		partikel_dst.y[i] = partikel_src.y[i];
+		partikel_dst.z[i] = partikel_src.z[i];
+		partikel_dst.vx[i] = partikel_src.vx[i];
+		partikel_dst.vy[i] = partikel_src.vy[i];
+		partikel_dst.vz[i] = partikel_src.vz[i];
 	}
 }
 
@@ -30,12 +30,12 @@ int main() {
 	constexpr int skipRuns = 3; // Anzahl der Messungen, die nicht in Mittelwert berücksichtigt werden
 	constexpr float dt = 0.01f; // Länge eines Zeitschrittes
 
-	Particle* partikel_start = new Particle[nrOfParticles];
-	Particle* partikel = new Particle[nrOfParticles];
-	copyParticles(partikel_start, partikel, nrOfParticles);
+	Particle* partikel_start = new Particle(nrOfParticles);
+	Particle* partikel = new Particle(nrOfParticles);
+	copyParticles(*partikel_start, *partikel, nrOfParticles);
 
 	// Initiaslisierung der Partikel mit Zufallswerten
-	initParticles(partikel_start, nrOfParticles);
+	initParticles(*partikel_start, nrOfParticles);
 
 	// Messen der Performance
 	double runtimeStep[nrRuns] = { 0. }; // Sammlung der Laufzeiten der Steps
@@ -50,9 +50,9 @@ int main() {
 	printf("#### Runtime Measurements Particle Simulation  ###\n");
 
 	for (int run = 0; run < nrRuns; run++) {
-		copyParticles(partikel_start, partikel, nrOfParticles);
+		copyParticles(*partikel_start, *partikel, nrOfParticles);
 		const double tStart = omp_get_wtime(); // Start der Zeitmessung
-		MoveParticles(nrOfParticles, partikel, dt); // Funktion, die optimiert werden soll
+		MoveParticles(nrOfParticles, *partikel, dt); // Funktion, die optimiert werden soll
 		const double tEnd = omp_get_wtime(); // Ende der Zeitmessung
 
 		runtimeStep[run] = tEnd - tStart;
@@ -88,15 +88,15 @@ int main() {
 
 	float sum = .0f;
 	for (int i = 0; i < sizeof(partikel); i++) {
-		sum += partikel[i].vx;
-		sum += partikel[i].vy;
-		sum += partikel[i].vz;
-		sum += partikel[i].x;
-		sum += partikel[i].y;
-		sum += partikel[i].z;
+		sum += partikel->vx[i];
+		sum += partikel->vy[i];
+		sum += partikel->vz[i];
+		sum += partikel->x[i];
+		sum += partikel->y[i];
+		sum += partikel->z[i];
 	}
 	sum /= 1208.87023903f;
 	printf("Sum: %f\n", sum);
-	delete[] partikel;
+	//delete[] partikel;
 	system("PAUSE");
 }

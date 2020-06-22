@@ -1,0 +1,404 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C++ Compiler for applications running on Intel(R) 64, Version 19.1.1.216 Build 20200306
+
+Compiler options: (null)
+
+    Report from: Interprocedural optimizations [ipo]
+
+  WHOLE PROGRAM (SAFE) [EITHER METHOD]: true
+  WHOLE PROGRAM (SEEN) [TABLE METHOD]: false
+  WHOLE PROGRAM (READ) [OBJECT READER METHOD]: true
+
+INLINING OPTION VALUES:
+  -Qinline-factor: 100
+  -Qinline-min-size: 30
+  -Qinline-max-size: 276
+  -Qinline-max-total-size: 2000
+  -Qinline-max-per-routine: disabled
+  -Qinline-max-per-compile: disabled
+
+
+Begin optimization report for: main()
+
+    Report from: Interprocedural optimizations [ipo]
+
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(26,12):INLINE REPORT START:(main()) [1/8=12.5%]
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(33,27):(1)-> EXTERN: operator new[](size_t)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(34,21):(1)-> EXTERN: operator new[](size_t)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(35,2):(1)-> INLINE: copyParticles(Particle *, Particle *, int) (isz = 48) (sz = 57)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(38,2):(1)-> INLINE: initParticles(Particle *, int) (isz = 57) (sz = 64)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(4,2):(2)-> EXTERN: srand(unsigned int)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(6,3):(2)-> EXTERN: rand()
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(7,3):(2)-> EXTERN: rand()
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(8,3):(2)-> EXTERN: rand()
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(9,3):(2)-> EXTERN: rand()
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(10,3):(2)-> EXTERN: rand()
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(11,3):(2)-> EXTERN: rand()
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(41,29):(1)-> EXTERN: ?1memset
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(42,28):(1)-> EXTERN: ?1memset
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(50,2):(1)-> printf(const char *, ...) (isz = 20) (sz = 27)
+     [[ Unable to inline callsite  <1>]]
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(53,3):(1)-> INLINE: copyParticles(Particle *, Particle *, int) (isz = 48) (sz = 57)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(54,23):(1)-> EXTERN: omp_get_wtime()
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(55,3):(1)-> INLINE: MoveParticles(int, Particle *, float) (isz = 210) (sz = 219)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(8,14):(2)-> EXTERN: _aligned_malloc(size_t, size_t)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(9,14):(2)-> EXTERN: _aligned_malloc(size_t, size_t)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(10,14):(2)-> EXTERN: _aligned_malloc(size_t, size_t)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(26,20):(2)-> INLINE (MANUAL): sqrt(float) (isz = 1) (sz = 8)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(56,21):(1)-> EXTERN: omp_get_wtime()
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(65,3):(1)-> printf(const char *, ...) (isz = 20) (sz = 27)
+     [[ Unable to inline callsite  <1>]]
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(67,3):(1)-> EXTERN: fflush(FILE *)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(67,3):(1)-> EXTERN: __acrt_iob_func(unsigned int)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(84,2):(1)-> printf(const char *, ...) (isz = 20) (sz = 27)
+     [[ Unable to inline callsite  <1>]]
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(85,2):(1)-> printf(const char *, ...) (isz = 20) (sz = 27)
+     [[ Unable to inline callsite  <1>]]
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(86,2):(1)-> printf(const char *, ...) (isz = 20) (sz = 27)
+     [[ Unable to inline callsite  <1>]]
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(87,2):(1)-> printf(const char *, ...) (isz = 20) (sz = 27)
+     [[ Unable to inline callsite  <1>]]
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(99,2):(1)-> printf(const char *, ...) (isz = 20) (sz = 27)
+     [[ Unable to inline callsite  <1>]]
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(100,2):(1)-> EXTERN: operator delete[](void *, size_t)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(101,2):(1)-> EXTERN: system(const char *)
+INLINE REPORT END
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2) inlined into D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(35,2)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or /Qvec-threshold0 to override
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(17,3):remark #15329: vectorization support: non-unit strided store was emulated for the variable <partikel->x[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(17,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel_start->x[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(18,3):remark #15329: vectorization support: non-unit strided store was emulated for the variable <partikel->y[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(18,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel_start->y[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(19,3):remark #15329: vectorization support: non-unit strided store was emulated for the variable <partikel->z[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(19,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel_start->z[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(20,3):remark #15329: vectorization support: non-unit strided store was emulated for the variable <partikel->vx[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(20,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel_start->vx[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(21,3):remark #15329: vectorization support: non-unit strided store was emulated for the variable <partikel->vy[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(21,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel_start->vy[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(22,3):remark #15329: vectorization support: non-unit strided store was emulated for the variable <partikel->vz[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(22,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel_start->vz[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15305: vectorization support: vector length 2
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15452: unmasked strided loads: 6 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15453: unmasked strided stores: 6 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15475: --- begin vector cost summary ---
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15476: scalar cost: 27 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15477: vector cost: 37.000 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15478: estimated potential speedup: 0.720 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15488: --- end vector cost summary ---
+LOOP END
+
+LOOP BEGIN at D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(5,2) inlined into D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(38,2)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(6,3):remark #15382: vectorization support: call to function rand() cannot be vectorized
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(7,3):remark #15382: vectorization support: call to function rand() cannot be vectorized
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(8,3):remark #15382: vectorization support: call to function rand() cannot be vectorized
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(9,3):remark #15382: vectorization support: call to function rand() cannot be vectorized
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(10,3):remark #15382: vectorization support: call to function rand() cannot be vectorized
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(11,3):remark #15382: vectorization support: call to function rand() cannot be vectorized
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(5,2):remark #15344: loop was not vectorized: vector dependence prevents vectorization
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(5,2):remark #15346: vector dependence: assumed OUTPUT dependence between call:rand() (6:3) and call:rand() (11:3)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(5,2):remark #15346: vector dependence: assumed OUTPUT dependence between call:rand() (11:3) and call:rand() (6:3)
+LOOP END
+
+LOOP BEGIN at D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2) inlined into D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(53,3)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or /Qvec-threshold0 to override
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(17,3):remark #15329: vectorization support: non-unit strided store was emulated for the variable <partikel->x[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(17,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel_start->x[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(18,3):remark #15329: vectorization support: non-unit strided store was emulated for the variable <partikel->y[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(18,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel_start->y[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(19,3):remark #15329: vectorization support: non-unit strided store was emulated for the variable <partikel->z[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(19,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel_start->z[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(20,3):remark #15329: vectorization support: non-unit strided store was emulated for the variable <partikel->vx[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(20,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel_start->vx[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(21,3):remark #15329: vectorization support: non-unit strided store was emulated for the variable <partikel->vy[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(21,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel_start->vy[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(22,3):remark #15329: vectorization support: non-unit strided store was emulated for the variable <partikel->vz[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(22,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel_start->vz[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15305: vectorization support: vector length 2
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15452: unmasked strided loads: 6 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15453: unmasked strided stores: 6 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15475: --- begin vector cost summary ---
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15476: scalar cost: 27 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15477: vector cost: 37.000 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15478: estimated potential speedup: 0.720 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(16,2):remark #15488: --- end vector cost summary ---
+LOOP END
+
+LOOP BEGIN at D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(12,2) inlined into D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(55,3)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(12,2):remark #15542: loop was not vectorized: inner loop was already vectorized
+
+LOOP BEGIN at D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(18,3) inlined into D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(55,3)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(30,4):remark #15388: vectorization support: reference arrX[j] has aligned access
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(31,4):remark #15388: vectorization support: reference arrY[j] has aligned access
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(32,4):remark #15388: vectorization support: reference arrZ[j] has aligned access
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(21,19):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel->x[j]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(22,19):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel->y[j]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(23,19):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel->z[j]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(18,3):remark #15305: vectorization support: vector length 4
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(18,3):remark #15309: vectorization support: normalized vectorization overhead 0.088
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(18,3):remark #15300: LOOP WAS VECTORIZED
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(18,3):remark #15449: unmasked aligned unit stride stores: 3 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(18,3):remark #15452: unmasked strided loads: 3 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(18,3):remark #15475: --- begin vector cost summary ---
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(18,3):remark #15476: scalar cost: 164 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(18,3):remark #15477: vector cost: 68.500 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(18,3):remark #15478: estimated potential speedup: 2.390 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(18,3):remark #15486: divides: 3 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(18,3):remark #15488: --- end vector cost summary ---
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(18,3):remark #25015: Estimate of max trip count of loop=4096
+LOOP END
+
+LOOP BEGIN at D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(37,3) inlined into D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(55,3)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(40,4):remark #15388: vectorization support: reference arrX[j] has aligned access
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(42,4):remark #15388: vectorization support: reference arrY[j] has aligned access
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(44,4):remark #15388: vectorization support: reference arrZ[j] has aligned access
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(37,3):remark #15305: vectorization support: vector length 4
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(37,3):remark #15399: vectorization support: unroll factor set to 2
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(37,3):remark #15309: vectorization support: normalized vectorization overhead 2.906
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(15,12):remark #15355: vectorization support: Fx is float type reduction
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(15,22):remark #15355: vectorization support: Fy is float type reduction
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(15,32):remark #15355: vectorization support: Fz is float type reduction
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(37,3):remark #15301: SIMD LOOP WAS VECTORIZED
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(37,3):remark #15448: unmasked aligned unit stride loads: 3 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(37,3):remark #15475: --- begin vector cost summary ---
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(37,3):remark #15476: scalar cost: 15 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(37,3):remark #15477: vector cost: 4.000 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(37,3):remark #15478: estimated potential speedup: 3.740 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(37,3):remark #15488: --- end vector cost summary ---
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(37,3):remark #25015: Estimate of max trip count of loop=2048
+LOOP END
+LOOP END
+
+LOOP BEGIN at D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(53,2) inlined into D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(55,3)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(54,3):remark #15329: vectorization support: non-unit strided store was emulated for the variable <partikel->x[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(54,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel->x[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(54,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel->vx[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(55,3):remark #15329: vectorization support: non-unit strided store was emulated for the variable <partikel->y[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(55,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel->y[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(55,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel->vy[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(56,3):remark #15329: vectorization support: non-unit strided store was emulated for the variable <partikel->z[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(56,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel->z[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(56,3):remark #15328: vectorization support: non-unit strided load was emulated for the variable <partikel->vz[i]>, stride is 6
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(53,2):remark #15305: vectorization support: vector length 2
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(53,2):remark #15399: vectorization support: unroll factor set to 2
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(53,2):remark #15300: LOOP WAS VECTORIZED
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(53,2):remark #15452: unmasked strided loads: 6 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(53,2):remark #15453: unmasked strided stores: 3 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(53,2):remark #15475: --- begin vector cost summary ---
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(53,2):remark #15476: scalar cost: 29 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(53,2):remark #15477: vector cost: 22.500 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(53,2):remark #15478: estimated potential speedup: 1.280 
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(53,2):remark #15488: --- end vector cost summary ---
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(53,2):remark #25015: Estimate of max trip count of loop=4096
+LOOP END
+
+LOOP BEGIN at D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(75,2)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(77,3):remark #15331: loop was not vectorized: precise FP model implied by the command line or a directive prevents vectorization. Consider using fast FP model
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(75,2):remark #25436: completely unrolled by 2  
+LOOP END
+
+LOOP BEGIN at D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(90,2)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(91,3):remark #15331: loop was not vectorized: precise FP model implied by the command line or a directive prevents vectorization. Consider using fast FP model
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(90,2):remark #25436: completely unrolled by 8  
+LOOP END
+
+
+Non-optimizable loops:
+
+
+LOOP BEGIN at D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(52,2)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(52,2):remark #15532: loop was not vectorized: compile time constraints prevent loop optimization. Consider using -O3.
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(21,19):remark #34030: adjacent sparse (strided) loads optimized for speed. Details: stride { 24 }, types { F32-V128, F32-V128, F32-V128 }, number of elements { 4 }, select mask { 0x000000007 }.
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(54,3):remark #34069: adjacent sparse (strided) loads seem unprofitable to optimize. Details: stride { 24 }, types { F32-V64, F32-V64, F32-V64, F32-V64, F32-V64, F32-V64 }, number of elements { 2 }, select mask { 0x00000003F }.
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(56,3):remark #34070: adjacent sparse (strided) stores seem unprofitable to optimize. Details: stride { 24 }, types { F32-V64, F32-V64, F32-V64 }, number of elements { 2 }, select mask { 0x000000007 }.
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(54,3):remark #34069: adjacent sparse (strided) loads seem unprofitable to optimize. Details: stride { 24 }, types { F32-V64, F32-V64, F32-V64, F32-V64, F32-V64, F32-V64 }, number of elements { 2 }, select mask { 0x00000003F }.
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(56,3):remark #34070: adjacent sparse (strided) stores seem unprofitable to optimize. Details: stride { 24 }, types { F32-V64, F32-V64, F32-V64 }, number of elements { 2 }, select mask { 0x000000007 }.
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(41,29):remark #34000: call to memset implemented inline with stores with proven (alignment, offset): (16, 0)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(42,28):remark #34000: call to memset implemented inline with stores with proven (alignment, offset): (16, 0)
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(26,12):remark #34051: REGISTER ALLOCATION : [main] D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp:26
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :   18[ rbx rbp rsi rdi r12-r15 xmm6-xmm15]
+        Assigned     :   30[ rax rdx rcx rbx rbp rsi r8-r15 zmm0-zmm15]
+        
+    Routine temporaries
+        Total         :     358
+            Global    :      91
+            Local     :     267
+        Regenerable   :      44
+        Spilled       :      18
+        
+    Routine stack
+        Variables     :      88 bytes*
+            Reads     :       7 [1.57e-001 ~ 0.2%]
+            Writes    :      10 [1.88e-001 ~ 0.2%]
+        Spills        :     184 bytes*
+            Reads     :      13 [1.73e-001 ~ 0.2%]
+            Writes    :      13 [2.12e-001 ~ 0.2%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: printf(const char *, ...)
+
+    Report from: Interprocedural optimizations [ipo]
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(954,5):INLINE REPORT START:(printf(const char *, ...)) [2/8=25.0%]
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(957,9):(1)-> EXTERN: __va_start(va_list *, ...)
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(958,9):(1)-> EXTERN: __acrt_iob_func(unsigned int)
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(958,9):(1)-> INLINE (MANUAL): _vfprintf_l(FILE *, const char *, _locale_t, va_list) (isz = 5) (sz = 18)
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(643,9):(2)-> EXTERN: __stdio_common_vfprintf(unsigned __int64, FILE *, const char *, _locale_t, va_list)
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(643,9):(2)-> __local_stdio_printf_options() (isz = 1) (sz = 5)
+       [[ Called routine is noinline  <2>]]
+INLINE REPORT END
+
+    Report from: Code generation optimizations [cg]
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(954,5):remark #34051: REGISTER ALLOCATION : [printf] C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h:954
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :   18[ rbx rbp rsi rdi r12-r15 xmm6-xmm15]
+        Assigned     :    7[ rax rdx rcx rbp r8-r10]
+        
+    Routine temporaries
+        Total         :      40
+            Global    :      21
+            Local     :      19
+        Regenerable   :       3
+        Spilled       :       1
+        
+    Routine stack
+        Variables     :       8 bytes*
+            Reads     :       1 [2.08e+000 ~ 2.1%]
+            Writes    :       2 [4.17e+000 ~ 4.2%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+000 ~ 0.0%]
+            Writes    :       0 [0.00e+000 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: __local_stdio_printf_options()
+
+    Report from: Interprocedural optimizations [ipo]
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_stdio_config.h(86,5):INLINE REPORT START:(__local_stdio_printf_options()) [3/8=37.5%]
+INLINE REPORT END
+
+    Report from: Code generation optimizations [cg]
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_stdio_config.h(86,5):remark #34051: REGISTER ALLOCATION : [__local_stdio_printf_options] C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_stdio_config.h:86
+
+    Hardware registers
+        Reserved     :    2[ rsp rip]
+        Available    :   39[ rax rdx rcx rbx rbp rsi rdi r8-r15 mm0-mm7 zmm0-zmm15]
+        Callee-save  :   18[ rbx rbp rsi rdi r12-r15 xmm6-xmm15]
+        Assigned     :    1[ rax]
+        
+    Routine temporaries
+        Total         :      20
+            Global    :       0
+            Local     :      20
+        Regenerable   :       2
+        Spilled       :       0
+        
+    Routine stack
+        Variables     :       0 bytes*
+            Reads     :       0 [0.00e+000 ~ 0.0%]
+            Writes    :       0 [0.00e+000 ~ 0.0%]
+        Spills        :       0 bytes*
+            Reads     :       0 [0.00e+000 ~ 0.0%]
+            Writes    :       0 [0.00e+000 ~ 0.0%]
+    
+    Notes
+    
+        *Non-overlapping variables and spills may share stack space,
+         so the total stack size might be less than this.
+    
+
+===========================================================================
+
+Begin optimization report for: _vfprintf_l(FILE *, const char *, _locale_t, va_list)
+
+    Report from: Interprocedural optimizations [ipo]
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(642,5):DEAD STATIC FUNCTION:(_vfprintf_l(FILE *, const char *, _locale_t, va_list))  
+===========================================================================
+
+Begin optimization report for: MoveParticles(int, Particle *, float)
+
+    Report from: Interprocedural optimizations [ipo]
+
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\MoveParticles.cpp(3,86):DEAD STATIC FUNCTION:(MoveParticles(int, Particle *, float))  
+===========================================================================
+
+Begin optimization report for: sqrt(float)
+
+    Report from: Interprocedural optimizations [ipo]
+
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\cmath(242,89):DEAD STATIC FUNCTION:(sqrt(float))  
+===========================================================================
+
+Begin optimization report for: copyParticles(Particle *, Particle *, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(15,104):DEAD STATIC FUNCTION:(copyParticles(Particle *, Particle *, int))  
+===========================================================================
+
+Begin optimization report for: initParticles(Particle *, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(3,70):DEAD STATIC FUNCTION:(initParticles(Particle *, int))  
+===========================================================================
+
+    Report from: Profile guided optimizations [pgo]
+
+
+
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_stdio_config.h(86,5):remark #24003: __local_stdio_printf_options(): profile feedback used a static estimate profile
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(954,5):remark #24003: printf(const char *, ...): profile feedback used a static estimate profile
+D:\Fh_Aachen\FH_Aachen_S4\PA\Ausarbeitung\01_Original.cpp(26,12):remark #24003: main(): profile feedback used a static estimate profile
+
+  0 out of 3 routine(s) used training profile data for PGO feedback
+  0 out of 3 routine(s) were unable to use training profile data for PGO feedback
+  0 out of 3 routine(s) were unable to find training profile data for PGO feedback
+  3 out of 3 routine(s) used a static estimate profile for PGO feedback
+
+
+
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINING FOOTNOTES:
+
+<1> Inlining the function will lead to incorrect program behavior.
+
+<2> The routine declaration is annotated with "__declspec(noinline)".  Remove 
+    this annotation to permit the compiler to inline this routine.
+
