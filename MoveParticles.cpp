@@ -23,11 +23,12 @@ void MoveParticles(const int nr_Particles, Particle* const partikel, const float
 			const float dy = partikel[j].y - partikel[i].y;
 			const float dz = partikel[j].z - partikel[i].z;
 			const float drSquared = dx * dx + dy * dy + dz * dz + softening;
-			const float drPower32 = pow(drSquared, 3.0f / 2.0f);
+			float drPower32 = sqrt(drSquared);
+			drPower32 = drPower32 * drPower32 * drPower32;
 
 			// Addiere Kraftkomponenten zur Netto-Kraft
 			// What is more efficient? Bottleneck by one division and three multiplication, or three divisions?
-			drPower32divided = 1.0f / drPower32;
+			float drPower32divided = 1.0f / drPower32;
 			
 			arrX[j] = dx * drPower32divided;
 			arrY[j] = dy * drPower32divided;
