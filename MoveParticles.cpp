@@ -4,11 +4,7 @@ void MoveParticles(const int nr_Particles, Particle* const partikel, const float
 	
 	// Abschwächung als zusätzlicher Abstand, um Singularität und Selbst-Interaktion zu vermeiden
 	const float softening = 1e-20f;
-
-	float* arrX = (float*)_mm_malloc(sizeof(float) * nr_Particles, 32);
-	float* arrY = (float*)_mm_malloc(sizeof(float) * nr_Particles, 32);
-	float* arrZ = (float*)_mm_malloc(sizeof(float) * nr_Particles, 32);
-
+	float dx = .0f, dy = .0f, dz = .0f;
 	// Schleife über alle Partikel
 	for (int i = 0; i < nr_Particles; i++) {
 
@@ -16,31 +12,25 @@ void MoveParticles(const int nr_Particles, Particle* const partikel, const float
 		float Fx = .0f, Fy = .0f, Fz = .0f;
 
 		// Schleife über die anderen Partikel die Kraft auf Partikel i ausüben
+#pragma omp simd
 		for (int j = 0; j < nr_Particles; j++) {
 			// Gravitationsgesetz
 			// Berechne Abstand der Partikel i und j
-			const float dx = partikel[j].x - partikel[i].x;
-			const float dy = partikel[j].y - partikel[i].y;
-			const float dz = partikel[j].z - partikel[i].z;
+			float dx = partikel[j].x - partikel[i].x;
+			float dy = partikel[j].y - partikel[i].y;
+			float dz = partikel[j].z - partikel[i].z;
 			const float drSquared = dx * dx + dy * dy + dz * dz + softening;
 			float drPower32 = sqrt(drSquared);
 			drPower32 = drPower32 * drPower32 * drPower32;
+			//float drPower32 = pow(drSquared, 3.0f / 2.0f);
 
 			// Addiere Kraftkomponenten zur Netto-Kraft
 			// What is more efficient? Bottleneck by one division and three multiplication, or three divisions?
 			float drPower32divided = 1.0f / drPower32;
 			
-			arrX[j] = dx * drPower32divided;
-			arrY[j] = dy * drPower32divided;
-			arrZ[j] = dz * drPower32divided;
-		}
-		
-		#pragma omp simd
-		for (int j = 0; j < nr_Particles; j++) {
-			// Addiere Kraftkomponenten zur Netto-Kraft
-			Fx += arrX[j];
-			Fy += arrY[j];
-			Fz += arrZ[j];
+			Fx += dx * drPower32divided;
+			Fy += dy * drPower32divided;
+			Fz += dz * drPower32divided;
 		}
 
 		// Berechne Änderung der Geschwindigkeit des Partikel i durch einwirkende Kraft 

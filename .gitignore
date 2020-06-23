@@ -4,3 +4,5 @@ Ausarbeitung/.vs/
 Ausarbeitung/Release/
 Ausarbeitung/x64/
 *.gch
+*.db3
+Ausarbeitung/VTune Profiler Results/
