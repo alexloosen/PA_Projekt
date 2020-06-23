@@ -8,8 +8,11 @@ void MoveParticles(const int nr_Particles, Particle const partikel, const float 
 	float Fx = .0f, Fy = .0f, Fz = .0f;
 //	float dx = .0f, dy = .0f, dz = .0f;
 	// Schleife über alle Partikel
+	//int num_threads = omp_get_max_threads();
+	int num_threads = 8;
+	omp_set_num_threads(num_threads);
 #pragma ivdep
-//#pragma omp parallel
+#pragma omp parallel for schedule(static)
 	for (int i = 0; i < nr_Particles; i++) {
 		// Schleife über die anderen Partikel die Kraft auf Partikel i ausüben
 #pragma omp simd
