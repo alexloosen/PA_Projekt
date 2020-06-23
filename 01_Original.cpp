@@ -98,5 +98,6 @@ int main() {
 	sum /= 1208.87023903f;
 	printf("Sum: %f\n", sum);
 	//delete[] partikel;
+	delete partikel;
 	system("PAUSE");
 }
