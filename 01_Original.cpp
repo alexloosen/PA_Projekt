@@ -136,4 +136,5 @@ int main() {
 	//delete[] partikel;
 	delete partikel;
 	system("PAUSE");
+	return 0;
 }
