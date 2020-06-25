@@ -16,9 +16,9 @@ void MoveParticles(const int nr_Particles, Particle* const partikel, const float
 
 			// Gravitationsgesetz
 			// Berechne Abstand der Partikel i und j
-			const float dx = partikel->x[j] - partikel->x[j];
-			const float dy = partikel->y[j] - partikel->y[j];
-			const float dz = partikel->z[j] - partikel->z[j];
+			const float dx = partikel->x[j] - partikel->x[i];
+			const float dy = partikel->y[j] - partikel->y[i];
+			const float dz = partikel->z[j] - partikel->z[i];
 			const float drSquared = dx * dx + dy * dy + dz * dz + softening;
 			const float drPower32 = pow(drSquared, 3.0 / 2.0);
 

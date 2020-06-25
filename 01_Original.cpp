@@ -4,8 +4,8 @@ void testRoutine(Particle ref, Particle moved, int nr_particles)
 {
 	int anzFehler = 0;
 
-	float absDiff[6];
-	float abw[6];
+	float absDiff[6] = {.0f};
+	float abw[6] = {.0f};
 
 	for (int i = 0; i < nr_particles; i++) {
 		absDiff[0] = fabsf(ref.x[i] - moved.x[i]);
@@ -23,7 +23,7 @@ void testRoutine(Particle ref, Particle moved, int nr_particles)
 		abw[5] = fmaxf(0.001f, 0.001f * ref.vz[i]);
 
 		for (int j = 0; j < 6; j++) {
-			if (abw[j] < absDiff[j]) {
+			if (absDiff[j] > abw[j]) {
 				printf("Wert an Stelle %d,%d liegt ueber der Toleranz!\n", i, j);
 				anzFehler++;
 			}
@@ -58,7 +58,7 @@ void copyParticles(Particle const partikel_src, Particle const partikel_dst, con
 int main() {
 	//Problemgröße und Anzahl und Größe der Zeitschritte definieren
 	constexpr int nrOfParticles = 16384;
-	constexpr int nrRuns = 5;  // Anzahl der Läufe und der Zeitschritte der Simulation
+	constexpr int nrRuns = 10;  // Anzahl der Läufe und der Zeitschritte der Simulation
 	constexpr int skipRuns = 3; // Anzahl der Messungen, die nicht in Mittelwert berücksichtigt werden
 	constexpr float dt = 0.01f; // Länge eines Zeitschrittes
 
