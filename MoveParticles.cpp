@@ -5,16 +5,16 @@ void MoveParticles(const int nr_Particles, Particle const partikel, const float 
 
 	// Abschwächung als zusätzlicher Abstand, um Singularität und Selbst-Interaktion zu vermeiden
 	const float softening = 1e-20f;
-	float Fx = .0f, Fy = .0f, Fz = .0f;
 //	float dx = .0f, dy = .0f, dz = .0f;
 	int max_num_threads = omp_get_max_threads();
 	omp_set_num_threads(8);
 	// Schleife über alle Partikel
-#pragma ivdep omp parallel schedule(static)
-//#pragma omp parallel
+#pragma omp parallel for num_threads(max_num_threads) schedule(static)
 	for (int i = 0; i < nr_Particles; i++) {
 		// Schleife über die anderen Partikel die Kraft auf Partikel i ausüben
+		float Fx = .0f, Fy = .0f, Fz = .0f;
 #pragma omp simd
+//#pragma omp parallel for simd reduction(+: Fx,Fy,Fz)
 		for (int j = 0; j < nr_Particles; j++) {
 			// Gravitationsgesetz
 			// Berechne Abstand der Partikel i und j
@@ -33,9 +33,6 @@ void MoveParticles(const int nr_Particles, Particle const partikel, const float 
 		partikel.vx[i] += dt * Fx;
 		partikel.vy[i] += dt * Fy;
 		partikel.vz[i] += dt * Fz;
-		Fx = .0f;
-		Fy = .0f;
-		Fz = .0f;
 	}
 	// Bewege Partikel entsprechend der aktuellen Geschwindigkeit
 	for (int i = 0; i < nr_Particles; i++) {

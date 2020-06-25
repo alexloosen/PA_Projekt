@@ -1,5 +1,37 @@
 #include "main.h"
 
+void testRoutine(Particle ref, Particle moved, int nr_particles)
+{
+	int anzFehler = 0;
+
+	float absDiff[6];
+	float abw[6];
+
+	for (int i = 0; i < nr_particles; i++) {
+		absDiff[0] = fabsf(ref.x[i] - moved.x[i]);
+		absDiff[1] = fabsf(ref.y[i] - moved.y[i]);
+		absDiff[2] = fabsf(ref.z[i] - moved.z[i]);
+		absDiff[3] = fabsf(ref.vx[i] - moved.vx[i]);
+		absDiff[4] = fabsf(ref.vy[i] - moved.vy[i]);
+		absDiff[5] = fabsf(ref.vz[i] - moved.vz[i]);
+
+		abw[0] = fmaxf(0.001f, 0.001f * ref.x[i]);
+		abw[1] = fmaxf(0.001f, 0.001f * ref.y[i]);
+		abw[2] = fmaxf(0.001f, 0.001f * ref.z[i]);
+		abw[3] = fmaxf(0.001f, 0.001f * ref.vx[i]);
+		abw[4] = fmaxf(0.001f, 0.001f * ref.vy[i]);
+		abw[5] = fmaxf(0.001f, 0.001f * ref.vz[i]);
+
+		for (int j = 0; j < 6; j++) {
+			if (abw[j] < absDiff[j]) {
+				printf("Wert an Stelle %d,%d liegt ueber der Toleranz!\n", i, j);
+				anzFehler++;
+			}
+		}
+	}
+	printf("Pruefroutine beendet!\nEs wurden %d zu grosse Abweichungen gefunden!\n", anzFehler);	
+}
+
 void initParticles(Particle const partikel, const int nr_Particles) {
 	srand(0);
 	for (int i = 0; i < nr_Particles; i++) {
@@ -86,17 +118,21 @@ int main() {
 	printf("Average Performance: %f03 +- %f03 GFLOPS/s \n", meanGFlops, stdGFlops);
 	printf("#####################################\n");
 
-	float sum = .0f;
-	for (int i = 0; i < sizeof(partikel); i++) {
-		sum += partikel->vx[i];
-		sum += partikel->vy[i];
-		sum += partikel->vz[i];
-		sum += partikel->x[i];
-		sum += partikel->y[i];
-		sum += partikel->z[i];
-	}
-	sum /= 1208.87023903f;
-	printf("Sum: %f\n", sum);
+	Particle* partikelTest = new Particle(nrOfParticles);
+	copyParticles(*partikel_start, *partikelTest, nrOfParticles);
+	MoveParticles(nrOfParticles, *partikelTest, dt); // Funktion, die optimiert werden soll
+	testRoutine(*partikelTest, *partikel, nrOfParticles);
+	//float sum = .0f;
+	//for (int i = 0; i < sizeof(partikel); i++) {
+	//	sum += partikel->vx[i];
+	//	sum += partikel->vy[i];
+	//	sum += partikel->vz[i];
+	//	sum += partikel->x[i];
+	//	sum += partikel->y[i];
+	//	sum += partikel->z[i];
+	//}
+	//sum /= 1208.87023903f;
+	//printf("Sum: %f\n", sum);
 	//delete[] partikel;
 	delete partikel;
 	system("PAUSE");
