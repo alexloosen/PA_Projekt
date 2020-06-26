@@ -57,9 +57,9 @@ void copyParticles(Particle const partikel_src, Particle const partikel_dst, con
 
 int main() {
 	//Problemgröße und Anzahl und Größe der Zeitschritte definieren
-	constexpr int nrOfParticles = 163840;
-	constexpr int nrRuns = 50;  // Anzahl der Läufe und der Zeitschritte der Simulation
-	constexpr int skipRuns = 30; // Anzahl der Messungen, die nicht in Mittelwert berücksichtigt werden
+	constexpr int nrOfParticles = 830000;
+	constexpr int nrRuns = 3;  // Anzahl der Läufe und der Zeitschritte der Simulation
+	constexpr int skipRuns = 0; // Anzahl der Messungen, die nicht in Mittelwert berücksichtigt werden
 	constexpr float dt = 0.01f; // Länge eines Zeitschrittes
 
 	Particle* partikel_start = new Particle(nrOfParticles);
